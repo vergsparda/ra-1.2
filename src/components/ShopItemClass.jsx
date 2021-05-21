@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import ItemModel from '../models/ItemModel';
+import propTypes from 'prop-types';
 
 export default class  ShopItemClass extends React.Component {
+  static propTypes = {
+    item: propTypes.object.isRequired
+  }
+  
   render (){
     const { item } = this.props;
     return (
@@ -15,14 +18,9 @@ export default class  ShopItemClass extends React.Component {
         <div className="divider"></div>
         <div className="purchase-info">
           <div className="price">{item.currency + item.price.toFixed(2)}</div>
-        <button>Добавить в корзину</button>
-       </div>
-    </div>
-  )
+          <button>Добавить в корзину</button>
+        </div>
+      </div>
+    )
+  }
 }
-
-
-
-ShopItemClass.propTypes = {
-  item :  PropTypes.instanceOf(ItemModel).isRequired
-};
